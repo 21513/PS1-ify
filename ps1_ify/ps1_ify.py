@@ -355,11 +355,11 @@ class PS1_OT_op(Operator):
             scene.eevee.use_gtao = True
             scene.eevee.gtao_distance = 100
             # scene.eevee.use_gtao_bounce = False
-            scene.eevee.use_bloom = True
-            scene.eevee.use_ssr = True
-            scene.eevee.use_ssr_refraction = True
+            # scene.eevee.use_bloom = True
+            # scene.eevee.use_ssr = True
+            # scene.eevee.use_ssr_refraction = True
             # shadow settings
-            scene.eevee.shadow_cascade_size = '128'
+            # scene.eevee.shadow_cascade_size = '128'
             # color management settings
             scene.view_settings.view_transform = 'Standard'
             
@@ -380,7 +380,7 @@ class PS1_OT_op(Operator):
                 scene.render.resolution_x = 720
                 scene.render.resolution_y = 480
                 node4.inputs[1].default_value = 256.000
-                scene.eevee.shadow_cascade_size = '128'
+                # scene.eevee.shadow_cascade_size = '128'
                 scene.view_settings.look = 'Low Contrast'
             elif scene.placeholder.dropdown_box == 'PSP':
                 scene.render.resolution_x = 480
@@ -399,7 +399,7 @@ class PS1_OT_op(Operator):
                 scene.eevee.taa_render_samples = 64
                 scene.eevee.taa_samples = 64
                 node4.inputs[1].default_value = 512.000 # you can still access the composite nodes here!! cool!!
-                scene.eevee.shadow_cascade_size = '512'
+                # scene.eevee.shadow_cascade_size = '512'
                 scene.view_settings.look = 'Medium Contrast'
             elif scene.placeholder.dropdown_box == 'PS4':
                 scene.render.resolution_x = 1920
@@ -411,7 +411,7 @@ class PS1_OT_op(Operator):
                 node2.mute = True
                 node3.mute = True
                 node5.mute = True
-                scene.eevee.shadow_cascade_size = '1024'
+                # scene.eevee.shadow_cascade_size = '1024'
                 scene.view_settings.look = 'Medium High Contrast'
                 scene.view_settings.view_transform = 'AgX'
             elif scene.placeholder.dropdown_box == 'PS5':
@@ -431,7 +431,7 @@ class PS1_OT_op(Operator):
                 node3.mute = True
                 node4.mute = True
                 node5.mute = True
-                scene.eevee.shadow_cascade_size = '1024'
+                # scene.eevee.shadow_cascade_size = '1024'
                 scene.view_settings.look = 'Medium High Contrast'
                 scene.view_settings.view_transform = 'AgX'
 
@@ -516,11 +516,11 @@ class XBOX_OT_op(Operator):
             scene.eevee.use_gtao = True
             scene.eevee.gtao_distance = 100
             # scene.eevee.use_gtao_bounce = False
-            scene.eevee.use_bloom = True
-            scene.eevee.use_ssr = True
-            scene.eevee.use_ssr_refraction = True
+            # scene.eevee.use_bloom = True
+            # scene.eevee.use_ssr = True
+            # scene.eevee.use_ssr_refraction = True
             # shadow settings
-            scene.eevee.shadow_cascade_size = '128'
+            # scene.eevee.shadow_cascade_size = '128'
             # color management settings
             scene.view_settings.view_transform = 'Standard'
             
