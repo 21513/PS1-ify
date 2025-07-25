@@ -354,7 +354,7 @@ class PS1_OT_op(Operator):
             scene.eevee.use_taa_reprojection = False
             scene.eevee.use_gtao = True
             scene.eevee.gtao_distance = 100
-            scene.eevee.use_gtao_bounce = False
+            # scene.eevee.use_gtao_bounce = False
             scene.eevee.use_bloom = True
             scene.eevee.use_ssr = True
             scene.eevee.use_ssr_refraction = True
@@ -515,7 +515,7 @@ class XBOX_OT_op(Operator):
             scene.eevee.use_taa_reprojection = False
             scene.eevee.use_gtao = True
             scene.eevee.gtao_distance = 100
-            scene.eevee.use_gtao_bounce = False
+            # scene.eevee.use_gtao_bounce = False
             scene.eevee.use_bloom = True
             scene.eevee.use_ssr = True
             scene.eevee.use_ssr_refraction = True
