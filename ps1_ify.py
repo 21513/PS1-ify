@@ -6,8 +6,8 @@ from bpy.utils import register_class, unregister_class
 bl_info = {
     "name": "PS1-ify",
     "author": "baeac",
-    "version" : (1, 3),
-    "blender" : (4, 0, 2),
+    "version" : (1, 3, 1),
+    "blender" : (4, 2, 0),
     "location" : "View3D > PS1",
     "category" : "Import Settings",
     "description" : "Easily import all the settings needed to make your renders look like a PS1 game",
@@ -128,13 +128,19 @@ class WOBBLE_OT_op(Operator):
 
                 for node in geonodetree.nodes:
                     geonodetree.nodes.remove(node)
+                    
+                geonode0 = geonodetree.nodes.new(type='ShaderNodeMath')
+                geonode0.location = (-400, 0)
+                
+                geonode0.operation = 'MULTIPLY'
+                geonode0.inputs[1].default_value = 1.000
+                
+                driver = geonode0.inputs[0].driver_add("default_value")
+                driver.driver.expression = 'frame/1000'
 
                 geonode1 = geonodetree.nodes.new(type='ShaderNodeTexMusgrave')
                 geonode1.location = (-200, 0)
                 geonode1.musgrave_dimensions = '4D'
-
-                driver = geonode1.inputs[1].driver_add("default_value")
-                driver.driver.expression = 'frame/120'
 
                 geonode1.inputs[2].default_value = 0.100
                 geonode1.inputs[3].default_value = 15.000
@@ -144,7 +150,7 @@ class WOBBLE_OT_op(Operator):
                 geonode2.location = (0, 0)
 
                 geonode2.operation = 'MULTIPLY'
-                geonode2.inputs[1].default_value = 0.002
+                geonode2.inputs[1].default_value = 0.010
 
                 geonode3 = geonodetree.nodes.new(type='GeometryNodeSetPosition')
                 geonode3.location = (200, 150)
@@ -153,13 +159,29 @@ class WOBBLE_OT_op(Operator):
                 geonode4.location = (400, 150)
 
                 geonode5 = geonodetree.nodes.new(type='NodeGroupInput')
-                geonode5.location = (0, 150)
+                geonode5.location = (-600, 150)
+                
+                geonodetree.interface.new_socket(
+                    name='Speed',
+                    in_out='INPUT',
+                    socket_type='NodeSocketFloat'
+                )
+                
+                geonodetree.interface.new_socket(
+                    name='Strength',
+                    in_out='INPUT',
+                    socket_type='NodeSocketFloat'
+                )
 
                 # connecting nodes
+                geonodetree.links.new(geonode0.outputs[0], geonode1.inputs[1])
                 geonodetree.links.new(geonode1.outputs[0], geonode2.inputs[0])
                 geonodetree.links.new(geonode2.outputs[0], geonode3.inputs[3])
                 geonodetree.links.new(geonode3.outputs[0], geonode4.inputs[0])
                 geonodetree.links.new(geonode5.outputs[0], geonode3.inputs[0])
+                
+                geonodetree.links.new(geonode5.outputs[1], geonode0.inputs[1])
+                geonodetree.links.new(geonode5.outputs[2], geonode2.inputs[1])
 
                 bpy.context.area.ui_type = 'VIEW_3D'
 
