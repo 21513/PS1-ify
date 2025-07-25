@@ -4,7 +4,7 @@ from ps1_ify import ps1_ify
 bl_info = {
     "name": "PS1-ify",
     "author": "baeac",
-    "version" : (1, 5, 0),
+    "version" : (1, 5, 1),
     "blender" : (4, 5, 0),
     "location" : "View3D > PS1",
     "category" : "Import Settings",
